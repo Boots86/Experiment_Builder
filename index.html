@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Experiment Builder Game</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+      
+      
+      <div id="page-heading">
+          
+          <h1>Experiment Builder</h1><img src="images/rocket-side.gif">
+      </div>
+      <span id="sub-text"><p>Do some <b>research</b> and <b>identify</b> all of the inputs needed to build your <b>experiment</b>. </p></span>
+
+      
+      
+      <div id="game-header">
+          <div id="col-game-selector">
+              <button id="mode-btn" type="button" onclick="setupGame()">New Game</button>
+              <select id="mode-setting"></select>
+              
+          </div>
+          
+          <div id="col-time">
+              <h4>Time Spent: </h4>
+              <span id="game-timer">0</span>
+          </div>
+          <br>
+          <div id="col-remaining">
+              <h4>Research Items Remaining: </h4>
+              <span id="game-bombs-remaining"></span>
+          </div>
+      </div>
+      <br>
+      
+      <table id="game-table"></table>
+      
+      
+      <script>
+          const CONFIG = {
+              mode: {
+                  easy: {
+                      name: "Easy",
+                      size: {
+                          rows: 10,
+                          cols: 10,
+                      },
+                      bombs: 10
+                  },
+                  medium: {
+                      name: "Medium",
+                      size: {
+                          rows: 15,
+                          cols: 15,
+                      },
+                      bombs: 35
+                  },
+                  hard: {
+                      name: "Hard",
+                      size: {
+                          rows: 15,
+                          cols: 20,
+                      },
+                      bombs: 60
+                  },
+              },
+              
+              //current mode
+              currentMode: "easy",
+              
+              //Bomb Locations
+              bombLocations: [],
+              
+              //Game is playable
+              gamePlayable: true,
+          };
+      
+      </script>
+      
+
+    <script src="app.js" async defer></script>
+  </body>
+</html>
