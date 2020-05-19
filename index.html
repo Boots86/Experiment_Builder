@@ -38,7 +38,7 @@
           </div>
           
           <div id="col-time">
-              <h4>Time Spent: </h4>
+              <h4>Time Spent (Seconds): </h4>
               <span id="game-timer">0</span>
           </div>
           <br>
@@ -51,6 +51,22 @@
       
       <table id="game-table"></table>
       
+      <div id="score-sheet">
+          <span id="score-head">Text</span>
+          <div id="score-sheet-head">
+              <h4>Your Score:</h4>
+              <span id="score-display">000</span>
+              <h4>Time Spent:</h4>
+              <div id="time-layout">
+                  <span id="final-time">000</span>
+                  <pre> /</pre> 
+                  <div id="maximum-time">000</div>
+              </div>
+          </div>
+          <h3 id="final-msg"></h3>
+          
+      </div>
+      
       
       <script>
           const CONFIG = {
@@ -61,7 +77,8 @@
                           rows: 10,
                           cols: 10,
                       },
-                      bombs: 10
+                      bombs: 10,
+                      maxTime: 420,
                   },
                   medium: {
                       name: "Medium",
@@ -69,7 +86,8 @@
                           rows: 15,
                           cols: 15,
                       },
-                      bombs: 35
+                      bombs: 35,
+                      maxTime: 900,
                   },
                   hard: {
                       name: "Hard",
@@ -77,7 +95,8 @@
                           rows: 15,
                           cols: 20,
                       },
-                      bombs: 60
+                      bombs: 60,
+                      maxTime: 1200,
                   },
               },
               
@@ -89,11 +108,14 @@
               
               //Game is playable
               gamePlayable: true,
+              
+              //Level Score Multiplier
+              gameScoreMulti: 25,
           };
       
       </script>
       
 
-    <script src="app.js" async defer></script>
+    <script src="app.min.js" async defer></script>
   </body>
 </html>

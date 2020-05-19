@@ -16,6 +16,14 @@ h1 {
     margin-top: auto;
     padding-right: 20px;
 }
+pre{
+    padding:0;
+    margin:0;
+}
+h3{
+    font-weight: 100;
+    padding:5px 10px;
+}
 #game-table td{
     width: 40px;
     height: 40px;
@@ -46,7 +54,6 @@ h1 {
     align-items: center;
     padding:0;
     margin: 0;
-    
     color:#63666a;
 }
 
@@ -63,9 +70,11 @@ h1 {
     font-weight: bold;
     border: 2px solid #63666a;
 }
-#game-header h4 {
+#game-header h4{
+    padding-bottom: 10px;
+}
+h4 {
     font-size: 13px;
-    padding-bottom: 5px;
     color:#63666a;
     margin: 0;
 }
@@ -88,4 +97,44 @@ h1 {
     justify-content: center;
     background-color: #f0b323;
     color: #FFF;
+}
+#score-sheet{
+    max-height: 600px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #63666a;
+    align-items: center;
+    text-align: center;
+    color:#63666a;
+    background-color: #FFF;
+    position: absolute;
+    z-index: 99;
+    top: 35vh;
+    
+}
+#score-sheet-head{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: space-around;
+    align-items: center;
+    color: #00b2a9;
+    font-weight: bold;
+    border-bottom: 4px solid;
+    border-top: 4px solid;
+}
+#score-head {
+    margin:0;
+    font-size: 2rem;
+    padding-bottom: 25px;
+    padding-top: 15px;
+    color: #00b2a9;
+}
+#score-sheet{
+    display: none;
+}
+#time-layout{
+    display: flex;
+    flex-direction: row;
 }

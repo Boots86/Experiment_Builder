@@ -13,6 +13,8 @@ const setupGame = () => {
           gameSizeCols = gameSize.cols;
     
     
+    document.getElementById("score-sheet").style.display = "none";// New game clear score sheet
+    document.getElementById("score-display").innerHTML = 000; //new game clear score
     
     //Genterate bomb locations
     const bombCells = [];
@@ -114,7 +116,8 @@ const newCellClicked = (cell, isRightBtn) => {
           col = parseInt(cell.getAttribute("col"), 0xa),
           hasBomb = parseInt(cell.getAttribute("hasBomb"), 0xa)===1,
           bombsAroundCell = parseInt(cell.getAttribute("bombsAroundCell"), 0xa);
-    
+    const levelMaxTime = CONFIG.mode[CONFIG.currentMode].maxTime,
+                  levelScore = CONFIG.gameScoreMulti;
     
     //right click (mark as bomb - flag)
     if(isRightBtn === true) {
@@ -146,7 +149,13 @@ const newCellClicked = (cell, isRightBtn) => {
        //lose game
         if(hasBomb) {
             timerControl();//stop timer
-            alert("You didn't have enough information to start working on your experiment, you can do some more research and try again.");
+            document.getElementById("score-sheet").style.display = "flex";
+            document.getElementById("score-head").innerHTML = "Better Luck Next Time!";
+            document.getElementById("final-time").innerHTML = timerTime;
+            document.getElementById("final-msg").innerHTML = "You didn't have enough information to start working on your experiment, you can do some more research and try again.";
+            document.getElementById("maximum-time").innerHTML = levelMaxTime;
+            
+            //alert("You didn't have enough information to start working on your experiment, you can do some more research and try again.");
 
             //Show all bombs
             CONFIG.bombLocations.map(cellID => {
@@ -195,10 +204,21 @@ const newCellClicked = (cell, isRightBtn) => {
             if(bombLocations.indexOf(cellID) > -1) foundBombsCorrect++;
         });
         if(foundBombsCorrect === bombLocations.length) {
+            
             //game won
-            alert("Great work, you are now ready to do an experiment");
+            //alert("Great work, you are now ready to do an experiment");
             timerControl(); //stop timer
             CONFIG.gamePlayable = false;
+            document.getElementById("score-sheet").style.display = "flex";
+            document.getElementById("score-head").innerHTML = "Well Done!";
+            document.getElementById("final-time").innerHTML = timerTime;
+            document.getElementById("final-msg").innerHTML = "Great work, you are now ready to do an experiment.";
+            document.getElementById("maximum-time").innerHTML = levelMaxTime;
+            //score for completing
+            document.getElementById("score-display").innerHTML = Math.max(0, levelMaxTime - timerTime)*levelScore;
+            
+            //console.log(typeof(levelMaxTime));
+            //console.log(levelScore);
         }    
     }
 };
@@ -277,6 +297,9 @@ const timerControl = action => {
         
         //right click for bomb marker
         gameTableHTML.oncontextmenu = () => {
+            return false;
+        }
+        document.getElementById("score-sheet").oncontextmenu = () => {
             return false;
         }
         
