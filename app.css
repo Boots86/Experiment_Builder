@@ -95,7 +95,7 @@ h4 {
     display: flex;
     width: 100%;
     justify-content: center;
-    background-color: #63666a;
+    background-color: #f0b323;
     color: #FFF;
 }
 #score-sheet{
@@ -107,7 +107,7 @@ h4 {
     align-items: center;
     text-align: center;
     color:#63666a;
-    background-color: #FFF;
+    background-color: rgba(255,255,255,0.9);
     position: absolute;
     z-index: 99;
     top: 35vh;
